@@ -48,6 +48,28 @@ source ~/.bashrc  # o source ~/.zshrc
    docker-compose exec laravel.test php artisan migrate
    ```
 
+7. Instalar dependencias de Node.js y compilar assets:
+   ```bash
+   docker-compose exec -T laravel.test npm install
+   docker-compose exec -T laravel.test npm run build
+   ```
+
+## Frontend
+
+El proyecto utiliza **Vue.js 3** con **Vite** para el frontend.
+
+### Desarrollo del frontend:
+```bash
+# Instalar dependencias de Vue.js
+docker-compose exec -T laravel.test npm install vue@^3.0.0 @vitejs/plugin-vue
+
+# Compilar assets para desarrollo
+docker-compose exec -T laravel.test npm run dev
+
+# Compilar assets para producción
+docker-compose exec -T laravel.test npm run build
+```
+
 ## Servicios
 
 - **Laravel**: http://localhost:9901
