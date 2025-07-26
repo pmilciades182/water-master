@@ -28,27 +28,34 @@ source ~/.bashrc  # o source ~/.zshrc
    cp .env.example .env
    ```
 
-3. Construir y ejecutar los contenedores:
+3. **Importante**: Configurar variables de usuario para Docker (esto evita warnings de permisos):
+   ```bash
+   # En Linux/Mac, agregar estas variables al .env si no están presentes:
+   echo "WWWUSER=$(id -u)" >> .env
+   echo "WWWGROUP=$(id -g)" >> .env
+   ```
+
+4. Construir y ejecutar los contenedores:
    ```bash
    docker-compose up --build -d
    ```
 
-4. Instalar dependencias de Laravel:
+5. Instalar dependencias de Laravel:
    ```bash
    docker-compose exec laravel.test composer install
    ```
 
-5. Generar la clave de la aplicación:
+6. Generar la clave de la aplicación:
    ```bash
    docker-compose exec laravel.test php artisan key:generate
    ```
 
-6. Ejecutar migraciones:
+7. Ejecutar migraciones:
    ```bash
    docker-compose exec laravel.test php artisan migrate
    ```
 
-7. Instalar dependencias de Node.js y compilar assets:
+8. Instalar dependencias de Node.js y compilar assets:
    ```bash
    docker-compose exec -T laravel.test npm install
    docker-compose exec -T laravel.test npm run build
