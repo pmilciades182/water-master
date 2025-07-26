@@ -1,0 +1,163 @@
+/* Microsoft Fluent Design System - Design Tokens */
+/* Optimized CSS Custom Properties for Performance */
+
+:root {
+  /* Color Tokens - Microsoft Fluent Palette */
+  --ms-color-primary: #0078d4;
+  --ms-color-primary-hover: #106ebe;
+  --ms-color-primary-pressed: #005a9e;
+  --ms-color-primary-tint10: #2b88d8;
+  --ms-color-primary-tint20: #c7e0f4;
+  --ms-color-primary-tint30: #deecf9;
+  --ms-color-primary-tint40: #eff6fc;
+  
+  /* Neutral Colors - Optimized for Memory */
+  --ms-color-neutral-white: #ffffff;
+  --ms-color-neutral-grey2: #fafafa;
+  --ms-color-neutral-grey4: #f3f2f1;
+  --ms-color-neutral-grey6: #edebe9;
+  --ms-color-neutral-grey8: #e1dfdd;
+  --ms-color-neutral-grey10: #d2d0ce;
+  --ms-color-neutral-grey12: #c8c6c4;
+  --ms-color-neutral-grey14: #b3b0ad;
+  --ms-color-neutral-grey16: #a19f9d;
+  --ms-color-neutral-grey18: #8a8886;
+  --ms-color-neutral-grey20: #797775;
+  --ms-color-neutral-grey24: #605e5c;
+  --ms-color-neutral-grey38: #484644;
+  --ms-color-neutral-grey54: #323130;
+  --ms-color-neutral-grey62: #292827;
+  --ms-color-neutral-grey84: #201f1e;
+  
+  /* Semantic Colors */
+  --ms-color-success: #107c10;
+  --ms-color-success-background: #ddf3dd;
+  --ms-color-warning: #797620;
+  --ms-color-warning-background: #fff4ce;
+  --ms-color-danger: #a4262c;
+  --ms-color-danger-background: #fde7e9;
+  
+  /* Typography Tokens */
+  --ms-font-family-base: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --ms-font-family-monospace: 'Cascadia Code', 'Consolas', monospace;
+  
+  /* Font Sizes - Type Ramp */
+  --ms-font-size-100: 0.75rem;   /* 12px - Caption */
+  --ms-font-size-200: 0.875rem;  /* 14px - Body */
+  --ms-font-size-300: 1rem;      /* 16px - Body Large */
+  --ms-font-size-400: 1.125rem;  /* 18px - Subtitle */
+  --ms-font-size-500: 1.25rem;   /* 20px - Title 3 */
+  --ms-font-size-600: 1.5rem;    /* 24px - Title 2 */
+  --ms-font-size-700: 1.75rem;   /* 28px - Title 1 */
+  --ms-font-size-800: 2rem;      /* 32px - Large Title */
+  --ms-font-size-900: 2.5rem;    /* 40px - Display */
+  
+  /* Line Heights */
+  --ms-line-height-100: 1rem;     /* 16px */
+  --ms-line-height-200: 1.25rem;  /* 20px */
+  --ms-line-height-300: 1.375rem; /* 22px */
+  --ms-line-height-400: 1.5rem;   /* 24px */
+  --ms-line-height-500: 1.75rem;  /* 28px */
+  --ms-line-height-600: 2rem;     /* 32px */
+  --ms-line-height-700: 2.25rem;  /* 36px */
+  --ms-line-height-800: 2.5rem;   /* 40px */
+  --ms-line-height-900: 3rem;     /* 48px */
+  
+  /* Font Weights */
+  --ms-font-weight-regular: 400;
+  --ms-font-weight-medium: 500;
+  --ms-font-weight-semibold: 600;
+  --ms-font-weight-bold: 700;
+  
+  /* Spacing Tokens - 4px Grid System */
+  --ms-spacing-xxxs: 0.125rem;  /* 2px */
+  --ms-spacing-xxs: 0.25rem;    /* 4px */
+  --ms-spacing-xs: 0.5rem;      /* 8px */
+  --ms-spacing-s: 0.75rem;      /* 12px */
+  --ms-spacing-m: 1rem;         /* 16px */
+  --ms-spacing-l: 1.25rem;      /* 20px */
+  --ms-spacing-xl: 1.5rem;      /* 24px */
+  --ms-spacing-xxl: 2rem;       /* 32px */
+  --ms-spacing-xxxl: 2.5rem;    /* 40px */
+  --ms-spacing-xxxxl: 3rem;     /* 48px */
+  
+  /* Border Radius */
+  --ms-border-radius-xs: 0.125rem;  /* 2px */
+  --ms-border-radius-s: 0.25rem;    /* 4px */
+  --ms-border-radius-m: 0.375rem;   /* 6px */
+  --ms-border-radius-l: 0.5rem;     /* 8px */
+  --ms-border-radius-xl: 0.75rem;   /* 12px */
+  
+  /* Shadows - Fluent Elevation */
+  --ms-shadow-2: 0 1px 2px rgba(0, 0, 0, 0.14), 0 0 2px rgba(0, 0, 0, 0.12);
+  --ms-shadow-4: 0 2px 4px rgba(0, 0, 0, 0.14), 0 0 2px rgba(0, 0, 0, 0.12);
+  --ms-shadow-8: 0 4px 8px rgba(0, 0, 0, 0.14), 0 0 2px rgba(0, 0, 0, 0.12);
+  --ms-shadow-16: 0 8px 16px rgba(0, 0, 0, 0.14), 0 0 2px rgba(0, 0, 0, 0.12);
+  --ms-shadow-64: 0 32px 64px rgba(0, 0, 0, 0.24), 0 0 8px rgba(0, 0, 0, 0.12);
+  
+  /* Animation Tokens */
+  --ms-duration-ultra-fast: 0.05s;
+  --ms-duration-faster: 0.1s;
+  --ms-duration-fast: 0.15s;
+  --ms-duration-normal: 0.2s;
+  --ms-duration-slow: 0.3s;
+  --ms-duration-slower: 0.5s;
+  
+  /* Easing Curves */
+  --ms-ease-accelerate: cubic-bezier(0.9, 0.1, 1, 0.2);
+  --ms-ease-decelerate: cubic-bezier(0.1, 0.9, 0.2, 1);
+  --ms-ease-max-easy-ease: cubic-bezier(0.8, 0, 0.2, 1);
+  --ms-ease-easy-ease: cubic-bezier(0.33, 0, 0.67, 1);
+  
+  /* Z-Index Scale */
+  --ms-z-index-background: -1;
+  --ms-z-index-default: 1;
+  --ms-z-index-dropdown: 1000;
+  --ms-z-index-modal: 1050;
+  --ms-z-index-popover: 1060;
+  --ms-z-index-tooltip: 1070;
+  --ms-z-index-notification: 1080;
+}
+
+/* Dark Theme Support */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ms-color-neutral-white: #1b1a19;
+    --ms-color-neutral-grey2: #201f1e;
+    --ms-color-neutral-grey4: #292827;
+    --ms-color-neutral-grey6: #323130;
+    --ms-color-neutral-grey8: #484644;
+    --ms-color-neutral-grey10: #605e5c;
+    --ms-color-neutral-grey12: #797775;
+    --ms-color-neutral-grey14: #8a8886;
+    --ms-color-neutral-grey16: #a19f9d;
+    --ms-color-neutral-grey18: #b3b0ad;
+    --ms-color-neutral-grey20: #c8c6c4;
+    --ms-color-neutral-grey24: #d2d0ce;
+    --ms-color-neutral-grey38: #e1dfdd;
+    --ms-color-neutral-grey54: #edebe9;
+    --ms-color-neutral-grey62: #f3f2f1;
+    --ms-color-neutral-grey84: #fafafa;
+  }
+}
+
+/* High Contrast Theme Support */
+@media (prefers-contrast: high) {
+  :root {
+    --ms-color-primary: #0f4a85;
+    --ms-color-neutral-grey8: #000000;
+    --ms-color-neutral-grey84: #ffffff;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --ms-duration-ultra-fast: 0.01ms;
+    --ms-duration-faster: 0.01ms;
+    --ms-duration-fast: 0.01ms;
+    --ms-duration-normal: 0.01ms;
+    --ms-duration-slow: 0.01ms;
+    --ms-duration-slower: 0.01ms;
+  }
+}

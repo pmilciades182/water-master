@@ -1,64 +1,63 @@
 <template>
-  <div class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50" @click="handleBackdropClick">
-    <div class="relative top-20 mx-auto p-5 border w-full max-w-md shadow-lg rounded-md bg-white" @click.stop>
-      <div class="mt-3">
-        <!-- Header -->
-        <div class="flex items-center justify-between mb-4">
-          <h3 class="text-lg leading-6 font-medium text-gray-900">
-            {{ isEdit ? 'Editar Usuario' : 'Nuevo Usuario' }}
-          </h3>
-          <button
-            @click="$emit('close')"
-            class="text-gray-400 hover:text-gray-600 transition-colors"
-          >
-            <i class="fas fa-times"></i>
-          </button>
-        </div>
+  <div class="ms-modal-overlay" @click="handleBackdropClick">
+    <div class="ms-modal max-w-md" @click.stop>
+      <div class="ms-modal-header">
+        <h3 class="ms-modal-title">
+          {{ isEdit ? 'Editar Usuario' : 'Nuevo Usuario' }}
+        </h3>
+        <button
+          @click="$emit('close')"
+          class="ms-button-subtle"
+        >
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="ms-modal-body">
 
         <!-- Form -->
         <form @submit.prevent="handleSubmit" class="space-y-4">
           <!-- Name -->
-          <div>
-            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">
-              Nombre completo <span class="text-red-500">*</span>
+          <div class="ms-form-group">
+            <label for="name" class="ms-label ms-label-required">
+              Nombre completo
             </label>
             <input
               id="name"
               v-model="form.name"
               type="text"
               required
-              class="block w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-              :class="errors.name ? 'border-red-300' : 'border-gray-300'"
+              class="ms-input"
+              :class="errors.name ? 'ms-input-error' : ''"
               placeholder="Ingresa el nombre completo"
             />
-            <p v-if="errors.name" class="mt-1 text-sm text-red-600">
+            <p v-if="errors.name" class="ms-form-error">
               {{ errors.name[0] }}
             </p>
           </div>
 
           <!-- Email -->
-          <div>
-            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">
-              Correo electrónico <span class="text-red-500">*</span>
+          <div class="ms-form-group">
+            <label for="email" class="ms-label ms-label-required">
+              Correo electrónico
             </label>
             <input
               id="email"
               v-model="form.email"
               type="email"
               required
-              class="block w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-              :class="errors.email ? 'border-red-300' : 'border-gray-300'"
+              class="ms-input"
+              :class="errors.email ? 'ms-input-error' : ''"
               placeholder="usuario@empresa.com"
             />
-            <p v-if="errors.email" class="mt-1 text-sm text-red-600">
+            <p v-if="errors.email" class="ms-form-error">
               {{ errors.email[0] }}
             </p>
           </div>
 
           <!-- Password (only for new users or when changing) -->
-          <div v-if="!isEdit || showPasswordFields">
-            <label for="password" class="block text-sm font-medium text-gray-700 mb-1">
-              Contraseña <span class="text-red-500" v-if="!isEdit">*</span>
+          <div v-if="!isEdit || showPasswordFields" class="ms-form-group">
+            <label for="password" class="ms-label" :class="!isEdit ? 'ms-label-required' : ''">
+              Contraseña
             </label>
             <div class="relative">
               <input
@@ -66,38 +65,38 @@
                 v-model="form.password"
                 :type="showPassword ? 'text' : 'password'"
                 :required="!isEdit"
-                class="block w-full px-3 py-2 pr-10 border rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                :class="errors.password ? 'border-red-300' : 'border-gray-300'"
+                class="ms-input pr-10"
+                :class="errors.password ? 'ms-input-error' : ''"
                 placeholder="Mínimo 8 caracteres"
               />
               <button
                 type="button"
                 @click="showPassword = !showPassword"
-                class="absolute inset-y-0 right-0 pr-3 flex items-center"
+                class="absolute inset-y-0 right-0 pr-3 flex items-center ms-button-subtle"
               >
-                <i :class="showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'" class="text-gray-400"></i>
+                <i :class="showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
               </button>
             </div>
-            <p v-if="errors.password" class="mt-1 text-sm text-red-600">
+            <p v-if="errors.password" class="ms-form-error">
               {{ errors.password[0] }}
             </p>
           </div>
 
           <!-- Password Confirmation -->
-          <div v-if="(!isEdit || showPasswordFields) && form.password">
-            <label for="password_confirmation" class="block text-sm font-medium text-gray-700 mb-1">
-              Confirmar contraseña <span class="text-red-500">*</span>
+          <div v-if="(!isEdit || showPasswordFields) && form.password" class="ms-form-group">
+            <label for="password_confirmation" class="ms-label ms-label-required">
+              Confirmar contraseña
             </label>
             <input
               id="password_confirmation"
               v-model="form.password_confirmation"
               type="password"
               :required="!isEdit && form.password"
-              class="block w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-              :class="errors.password_confirmation ? 'border-red-300' : 'border-gray-300'"
+              class="ms-input"
+              :class="errors.password_confirmation ? 'ms-input-error' : ''"
               placeholder="Repite la contraseña"
             />
-            <p v-if="errors.password_confirmation" class="mt-1 text-sm text-red-600">
+            <p v-if="errors.password_confirmation" class="ms-form-error">
               {{ errors.password_confirmation[0] }}
             </p>
           </div>
@@ -107,45 +106,46 @@
             <button
               type="button"
               @click="showPasswordFields = true"
-              class="text-sm text-blue-600 hover:text-blue-800"
+              class="ms-button-subtle ms-text-primary"
             >
-              <i class="fas fa-key mr-1"></i>
+              <i class="fas fa-key"></i>
               Cambiar contraseña
             </button>
           </div>
 
           <!-- Status -->
-          <div>
+          <div class="ms-form-group">
             <label class="flex items-center">
               <input
                 v-model="form.is_active"
                 type="checkbox"
-                class="rounded border-gray-300 text-blue-600 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                class="rounded focus:outline-none focus:ring-2 focus:ring-offset-2"
+                style="border-color: var(--color-neutral-60); color: var(--color-primary-500); box-shadow: 0 0 0 1px var(--color-primary-500);"
               />
-              <span class="ml-2 text-sm text-gray-700">Usuario activo</span>
+              <span class="ml-2 ms-font-body">Usuario activo</span>
             </label>
           </div>
 
-          <!-- Actions -->
-          <div class="flex items-center justify-end space-x-3 pt-4 border-t border-gray-200">
-            <button
-              type="button"
-              @click="$emit('close')"
-              class="px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-              :disabled="loading"
-            >
-              Cancelar
-            </button>
-            <button
-              type="submit"
-              class="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
-              :disabled="loading"
-            >
-              <i v-if="loading" class="fas fa-spinner fa-spin mr-2"></i>
-              {{ isEdit ? 'Actualizar' : 'Crear' }} Usuario
-            </button>
-          </div>
         </form>
+      </div>
+      <div class="ms-modal-footer">
+        <button
+          type="button"
+          @click="$emit('close')"
+          class="ms-button ms-button-secondary"
+          :disabled="loading"
+        >
+          Cancelar
+        </button>
+        <button
+          type="submit"
+          @click="handleSubmit"
+          class="ms-button ms-button-primary"
+          :disabled="loading"
+        >
+          <i v-if="loading" class="fas fa-spinner fa-spin mr-2"></i>
+          {{ isEdit ? 'Actualizar' : 'Crear' }} Usuario
+        </button>
       </div>
     </div>
   </div>

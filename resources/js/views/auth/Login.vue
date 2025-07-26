@@ -1,30 +1,30 @@
 <template>
-  <div class="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 py-12 px-4 sm:px-6 lg:px-8">
+  <div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8" style="background-color: var(--color-neutral-10);">
     <div class="max-w-md w-full space-y-8">
       <!-- Header -->
       <div class="text-center">
-        <div class="mx-auto h-12 w-12 bg-blue-600 rounded-full flex items-center justify-center">
-          <i class="fas fa-tint text-white text-xl"></i>
+        <div class="mx-auto h-12 w-12 rounded-full flex items-center justify-center" style="background-color: var(--color-primary-500);">
+          <i class="fas fa-tint text-xl" style="color: var(--color-neutral-0);"></i>
         </div>
-        <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
+        <h2 class="mt-6 text-center ms-font-large-title" style="color: var(--color-neutral-160);">
           Water Master
         </h2>
-        <p class="mt-2 text-center text-sm text-gray-600">
+        <p class="mt-2 text-center ms-font-body" style="color: var(--color-neutral-100);">
           Sistema de Gestión para Aguetería
         </p>
       </div>
 
       <!-- Alerts -->
-      <div v-if="errors.length > 0" class="bg-red-50 border border-red-300 rounded-md p-4">
+      <div v-if="errors.length > 0" class="p-4 rounded-lg" style="background-color: var(--color-error-tint-20); border: 1px solid var(--color-error-primary);">
         <div class="flex">
           <div class="flex-shrink-0">
-            <i class="fas fa-exclamation-circle text-red-400"></i>
+            <i class="fas fa-exclamation-circle" style="color: var(--color-error-primary);"></i>
           </div>
           <div class="ml-3">
-            <h3 class="text-sm font-medium text-red-800">
+            <h3 class="ms-font-body-strong" style="color: var(--color-error-shade-20);">
               {{ errors.length === 1 ? 'Error:' : 'Errores:' }}
             </h3>
-            <div class="mt-2 text-sm text-red-700">
+            <div class="mt-2 ms-font-body" style="color: var(--color-error-shade-10);">
               <ul class="list-disc pl-5 space-y-1">
                 <li v-for="error in errors" :key="error">{{ error }}</li>
               </ul>
@@ -33,13 +33,13 @@
         </div>
       </div>
 
-      <div v-if="successMessage" class="bg-green-50 border border-green-300 rounded-md p-4">
+      <div v-if="successMessage" class="p-4 rounded-lg" style="background-color: var(--color-success-tint-20); border: 1px solid var(--color-success-primary);">
         <div class="flex">
           <div class="flex-shrink-0">
-            <i class="fas fa-check-circle text-green-400"></i>
+            <i class="fas fa-check-circle" style="color: var(--color-success-primary);"></i>
           </div>
           <div class="ml-3">
-            <p class="text-sm font-medium text-green-800">
+            <p class="ms-font-body-strong" style="color: var(--color-success-shade-20);">
               {{ successMessage }}
             </p>
           </div>
@@ -47,10 +47,10 @@
       </div>
 
       <!-- Login Form -->
-      <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+      <div class="ms-card py-8 px-4 sm:px-10">
         <form class="space-y-6" @submit.prevent="handleLogin">
-          <div>
-            <label for="email" class="block text-sm font-medium text-gray-700">
+          <div class="ms-form-group">
+            <label for="email" class="ms-label">
               Correo electrónico
             </label>
             <div class="mt-1">
@@ -61,13 +61,14 @@
                 type="email"
                 autocomplete="email"
                 required
-                class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                class="ms-input"
+                placeholder="usuario@empresa.com"
               />
             </div>
           </div>
 
-          <div>
-            <label for="password" class="block text-sm font-medium text-gray-700">
+          <div class="ms-form-group">
+            <label for="password" class="ms-label">
               Contraseña
             </label>
             <div class="mt-1">
@@ -78,7 +79,8 @@
                 type="password"
                 autocomplete="current-password"
                 required
-                class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                class="ms-input"
+                placeholder="Ingresa tu contraseña"
               />
             </div>
           </div>
@@ -90,15 +92,16 @@
                 v-model="form.remember"
                 name="remember"
                 type="checkbox"
-                class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                class="h-4 w-4 rounded focus:outline-none focus:ring-2 focus:ring-offset-2"
+                style="border-color: var(--color-neutral-60); color: var(--color-primary-500);"
               />
-              <label for="remember" class="ml-2 block text-sm text-gray-900">
+              <label for="remember" class="ml-2 ms-font-body">
                 Recordarme
               </label>
             </div>
 
-            <div class="text-sm">
-              <a href="#" class="font-medium text-blue-600 hover:text-blue-500">
+            <div>
+              <a href="#" class="ms-font-body ms-text-primary hover:underline">
                 ¿Olvidaste tu contraseña?
               </a>
             </div>
@@ -108,11 +111,11 @@
             <button
               type="submit"
               :disabled="loading"
-              class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
+              class="ms-button ms-button-primary w-full justify-center relative"
             >
               <span class="absolute left-0 inset-y-0 flex items-center pl-3">
-                <i v-if="!loading" class="fas fa-sign-in-alt text-blue-500 group-hover:text-blue-400"></i>
-                <i v-else class="fas fa-spinner fa-spin text-blue-500"></i>
+                <i v-if="!loading" class="fas fa-sign-in-alt" style="color: var(--color-neutral-0);"></i>
+                <i v-else class="fas fa-spinner fa-spin" style="color: var(--color-neutral-0);"></i>
               </span>
               {{ loading ? 'Iniciando sesión...' : 'Iniciar Sesión' }}
             </button>
@@ -123,17 +126,17 @@
         <div class="mt-6">
           <div class="relative">
             <div class="absolute inset-0 flex items-center">
-              <div class="w-full border-t border-gray-300"></div>
+              <div class="w-full border-t" style="border-color: var(--color-neutral-40);"></div>
             </div>
-            <div class="relative flex justify-center text-sm">
-              <span class="px-2 bg-white text-gray-500">O continúa con</span>
+            <div class="relative flex justify-center ms-font-body">
+              <span class="px-2" style="background-color: var(--color-neutral-0); color: var(--color-neutral-100);">O continúa con</span>
             </div>
           </div>
 
           <div class="mt-6 grid grid-cols-2 gap-3">
             <a
               href="/auth/google/redirect"
-              class="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
+              class="ms-button ms-button-secondary w-full justify-center"
             >
               <svg class="w-5 h-5 text-red-500" viewBox="0 0 24 24">
                 <path fill="currentColor" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
@@ -146,7 +149,7 @@
 
             <a
               href="/auth/facebook/redirect"
-              class="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
+              class="ms-button ms-button-secondary w-full justify-center"
             >
               <i class="fab fa-facebook-f text-blue-600 text-lg"></i>
               <span class="ml-2">Facebook</span>
@@ -155,9 +158,9 @@
         </div>
 
         <div class="mt-6 text-center">
-          <p class="text-sm text-gray-600">
+          <p class="ms-font-body" style="color: var(--color-neutral-100);">
             ¿No tienes una cuenta?
-            <router-link to="/register" class="font-medium text-blue-600 hover:text-blue-500">
+            <router-link to="/register" class="ms-font-body-strong ms-text-primary hover:underline">
               Registrarse
             </router-link>
           </p>
