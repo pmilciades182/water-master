@@ -283,7 +283,7 @@ class User extends Authenticatable
     /**
      * Check if user can perform action on module.
      */
-    public function can(string $action, string $module): bool
+    public function canPerform(string $action, string $module): bool
     {
         return $this->hasPermission($module . '.' . $action);
     }
@@ -291,9 +291,9 @@ class User extends Authenticatable
     /**
      * Check if user cannot perform action on module.
      */
-    public function cannot(string $action, string $module): bool
+    public function cannotPerform(string $action, string $module): bool
     {
-        return !$this->can($action, $module);
+        return !$this->canPerform($action, $module);
     }
 
     // ROLE MANAGEMENT METHODS
