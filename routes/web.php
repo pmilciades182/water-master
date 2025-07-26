@@ -73,4 +73,21 @@ Route::middleware(['auth'])->prefix('api')->group(function () {
         Route::post('/bulk-remove', [App\Http\Controllers\Api\UserRoleController::class, 'bulkRemoveRole']);
         Route::post('/transfer', [App\Http\Controllers\Api\UserRoleController::class, 'transferRoleUsers']);
     });
+    
+    // Product Management Routes
+    Route::prefix('products')->group(function () {
+        Route::get('/', [App\Http\Controllers\Api\ProductController::class, 'index']);
+        Route::post('/', [App\Http\Controllers\Api\ProductController::class, 'store']);
+        Route::get('/{id}', [App\Http\Controllers\Api\ProductController::class, 'show']);
+        Route::put('/{id}', [App\Http\Controllers\Api\ProductController::class, 'update']);
+        Route::delete('/{id}', [App\Http\Controllers\Api\ProductController::class, 'destroy']);
+    });
+    
+    Route::prefix('product-categories')->group(function () {
+        Route::get('/', [App\Http\Controllers\Api\ProductCategoryController::class, 'index']);
+        Route::post('/', [App\Http\Controllers\Api\ProductCategoryController::class, 'store']);
+        Route::get('/{id}', [App\Http\Controllers\Api\ProductCategoryController::class, 'show']);
+        Route::put('/{id}', [App\Http\Controllers\Api\ProductCategoryController::class, 'update']);
+        Route::delete('/{id}', [App\Http\Controllers\Api\ProductCategoryController::class, 'destroy']);
+    });
 });

@@ -39,9 +39,6 @@ export const useAuthStore = defineStore('auth', () => {
   const login = async (credentials) => {
     loading.value = true
     try {
-      // Get CSRF token
-      await axios.get('/sanctum/csrf-cookie')
-      
       const response = await axios.post('/login', credentials)
       
       if (response.status === 200) {
@@ -61,9 +58,6 @@ export const useAuthStore = defineStore('auth', () => {
   const register = async (userData) => {
     loading.value = true
     try {
-      // Get CSRF token
-      await axios.get('/sanctum/csrf-cookie')
-      
       const response = await axios.post('/register', userData)
       
       if (response.status === 200) {
