@@ -1,6 +1,6 @@
 <template>
   <div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8" style="background-color: var(--color-neutral-10);">
-    <div class="max-w-md w-full space-y-8">
+    <div class="w-full max-w-lg space-y-8">
       <!-- Header -->
       <div class="text-center">
         <div class="mx-auto h-12 w-12 rounded-full flex items-center justify-center" style="background-color: var(--color-primary-500);">
@@ -47,7 +47,7 @@
       </div>
 
       <!-- Login Form -->
-      <div class="ms-card py-8 px-4 sm:px-10">
+      <div class="ms-card py-8 px-6 sm:px-10">
         <form class="space-y-6" @submit.prevent="handleLogin">
           <div class="ms-form-group">
             <label for="email" class="ms-label">

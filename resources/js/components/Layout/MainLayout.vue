@@ -206,7 +206,7 @@
 
     <!-- Coming Soon Modal -->
     <div v-if="showModal" class="ms-modal-overlay" @click="closeModal">
-      <div class="ms-modal w-96" @click.stop>
+      <div class="ms-modal ms-modal-sm" @click.stop>
         <div class="ms-modal-header">
           <h3 class="ms-modal-title">Próximamente</h3>
         </div>

@@ -1,6 +1,6 @@
 <template>
   <div class="ms-modal-overlay" @click="handleBackdropClick">
-    <div class="ms-modal max-w-md" @click.stop>
+    <div class="ms-modal" @click.stop>
       <div class="ms-modal-header">
         <h3 class="ms-modal-title">
           {{ isEdit ? 'Editar Usuario' : 'Nuevo Usuario' }}
