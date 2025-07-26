@@ -9,6 +9,11 @@ import Login from './views/auth/Login.vue';
 import Register from './views/auth/Register.vue';
 import Dashboard from './views/Dashboard.vue';
 
+// Import admin views
+import Users from './views/admin/Users.vue';
+import Roles from './views/admin/Roles.vue';
+import Permissions from './views/admin/Permissions.vue';
+
 // Import store
 import { useAuthStore } from './stores/auth';
 
@@ -32,6 +37,24 @@ const router = createRouter({
             path: '/dashboard',
             name: 'dashboard',
             component: Dashboard,
+            meta: { requiresAuth: true }
+        },
+        {
+            path: '/users',
+            name: 'users',
+            component: Users,
+            meta: { requiresAuth: true }
+        },
+        {
+            path: '/roles',
+            name: 'roles',
+            component: Roles,
+            meta: { requiresAuth: true }
+        },
+        {
+            path: '/permissions',
+            name: 'permissions',
+            component: Permissions,
             meta: { requiresAuth: true }
         },
         {

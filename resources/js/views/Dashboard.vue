@@ -1,58 +1,7 @@
 <template>
-  <div class="min-h-screen bg-gray-50">
-    <!-- Header -->
-    <header class="bg-white shadow-sm border-b border-gray-200">
-      <div class="px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16">
-          <div class="flex items-center">
-            <div class="flex-shrink-0 flex items-center">
-              <div class="h-8 w-8 bg-blue-600 rounded-full flex items-center justify-center">
-                <i class="fas fa-tint text-white"></i>
-              </div>
-              <span class="ml-2 text-xl font-semibold text-gray-900 hidden sm:block">Water Master</span>
-            </div>
-            
-            <!-- Company info -->
-            <div class="ml-6 border-l border-gray-200 pl-6 hidden md:block">
-              <p class="text-sm font-medium text-gray-900">{{ authStore.companyName }}</p>
-              <p class="text-xs text-gray-500">{{ authStore.company?.subdomain }}.watermaster.com</p>
-            </div>
-          </div>
-
-          <div class="flex items-center space-x-4">
-            <!-- User menu -->
-            <div class="relative">
-              <div class="flex items-center space-x-3">
-                <div v-if="authStore.user?.avatar" class="h-8 w-8">
-                  <img
-                    class="h-8 w-8 rounded-full object-cover"
-                    :src="authStore.user.avatar"
-                    :alt="authStore.userName"
-                  />
-                </div>
-                <div v-else class="h-8 w-8 bg-gray-300 rounded-full flex items-center justify-center">
-                  <i class="fas fa-user text-gray-600 text-sm"></i>
-                </div>
-                <div class="hidden md:block">
-                  <p class="text-sm font-medium text-gray-900">{{ authStore.userName }}</p>
-                  <p class="text-xs text-gray-500">{{ authStore.userEmail }}</p>
-                </div>
-                <button
-                  @click="handleLogout"
-                  class="text-gray-400 hover:text-gray-600 transition-colors"
-                  title="Cerrar sesión"
-                >
-                  <i class="fas fa-sign-out-alt"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
-
+  <MainLayout page-title="Dashboard">
     <!-- Main content -->
-    <main class="py-6">
+    <div class="py-6">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Welcome message -->
         <div class="mb-6">
@@ -220,7 +169,7 @@
           </div>
         </div>
       </div>
-    </main>
+    </div>
 
     <!-- Coming Soon Modal -->
     <div v-if="showModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50" @click="closeModal">
@@ -247,13 +196,14 @@
         </div>
       </div>
     </div>
-  </div>
+  </MainLayout>
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuthStore } from '../stores/auth'
+import MainLayout from '../components/Layout/MainLayout.vue'
 
 const router = useRouter()
 const authStore = useAuthStore()
@@ -271,10 +221,6 @@ const stats = ref({
 })
 
 // Methods
-const handleLogout = async () => {
-  await authStore.logout()
-  router.push('/login')
-}
 
 const openModal = (type) => {
   const types = {
